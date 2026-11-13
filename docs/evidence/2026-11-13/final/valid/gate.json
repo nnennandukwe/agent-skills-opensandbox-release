@@ -1,0 +1,63 @@
+{
+  "decision": "accepted",
+  "source_sha": "8b3f65fefb22bbdd2c31bbde07f74e77e47fd3ae",
+  "scenario": "valid",
+  "sandbox_image": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+  "sdk_version": "1.2.0",
+  "candidate": {
+    "source_sha": "8b3f65fefb22bbdd2c31bbde07f74e77e47fd3ae",
+    "wheel": "opensandbox_release_demo-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "e7c3252f81a4a32e6f8b2abe41a8df47fe4886bc138183e293dc763372283efc",
+    "manifest_sha256": "5db4c21d558d1b221931f4b952e15f59dca7078e0d091158ccb7f001b120141c",
+    "package": "opensandbox-release-demo",
+    "version": "0.1.0"
+  },
+  "helper_sha256": "f01c0f87cd637b8997b7e9e3b9be0da3f3c7e76ce3b3a7addf9e4b42d1bfd6df",
+  "sandbox_id": "1fba8379-d0cf-49b7-a941-ebb49a818790",
+  "uploaded_files": [
+    {
+      "path": "/tmp/skill/SKILL.md",
+      "sha256": "abc4373d3a310d47c0a5bc9c4355e4e1d1f73189fc82958e2abd5fd87d5403af"
+    },
+    {
+      "path": "/tmp/skill/scripts/check_manifest.py",
+      "sha256": "f01c0f87cd637b8997b7e9e3b9be0da3f3c7e76ce3b3a7addf9e4b42d1bfd6df"
+    },
+    {
+      "path": "/tmp/release-manifest.csv",
+      "sha256": "5db4c21d558d1b221931f4b952e15f59dca7078e0d091158ccb7f001b120141c"
+    }
+  ],
+  "execution": {
+    "id": "6e833240b31145f7860d9e7c9e0fa7c2",
+    "execution_count": null,
+    "result": [],
+    "error": null,
+    "complete": {
+      "timestamp": 1794595166863,
+      "execution_time_in_millis": 115
+    },
+    "exit_code": 0,
+    "logs": {
+      "stdout": [
+        {
+          "text": "{\"rows\": 1, \"valid\": true, \"packages\": [{\"package\": \"opensandbox-release-demo\", \"version\": \"0.1.0\"}]}",
+          "timestamp": 1794595166863,
+          "is_error": false
+        }
+      ],
+      "stderr": []
+    }
+  },
+  "report": {
+    "rows": 1,
+    "valid": true,
+    "packages": [
+      {
+        "package": "opensandbox-release-demo",
+        "version": "0.1.0"
+      }
+    ]
+  },
+  "post_destroy_status": 404
+}

@@ -1,17 +1,17 @@
 # Observed release results — November 13, 2026
 
 The three GitHub Actions runs below used source revision
-[`97d2a28f5441062fc5d275c9246bccf05e3f5777`](https://github.com/nnennandukwe/agent-skills-opensandbox-release/commit/97d2a28f5441062fc5d275c9246bccf05e3f5777).
+[`8b3f65fefb22bbdd2c31bbde07f74e77e47fd3ae`](https://github.com/nnennandukwe/agent-skills-opensandbox-release/commit/8b3f65fefb22bbdd2c31bbde07f74e77e47fd3ae).
 Each run built and installed its own Python wheel before the check job started.
-All twelve contract test methods passed in each build job.
+All thirteen contract test methods passed in each build job.
 
 | Scenario | Build | Helper exit | Check | Publish | Release lookup |
 |---|---|---:|---|---|---|
-| [Valid manifest](https://github.com/nnennandukwe/agent-skills-opensandbox-release/actions/runs/43483122103) | Passed | 0 | Passed | Passed | Demo prerelease exists |
-| [Missing version](https://github.com/nnennandukwe/agent-skills-opensandbox-release/actions/runs/43483132713) | Passed | 7 | Failed | Skipped | Expected release tag returned 404 |
-| [Incorrect report](https://github.com/nnennandukwe/agent-skills-opensandbox-release/actions/runs/43483138973) | Passed | 0 | Failed | Skipped | Expected release tag returned 404 |
+| [Valid manifest](https://github.com/nnennandukwe/agent-skills-opensandbox-release/actions/runs/43484557955) | Passed | 0 | Passed | Passed | Demo prerelease exists |
+| [Missing version](https://github.com/nnennandukwe/agent-skills-opensandbox-release/actions/runs/43484563060) | Passed | 7 | Failed | Skipped | Expected release tag returned 404 |
+| [Incorrect report](https://github.com/nnennandukwe/agent-skills-opensandbox-release/actions/runs/43484568731) | Passed | 0 | Failed | Skipped | Expected release tag returned 404 |
 
-The valid case created [demo prerelease `demo-43483122103-1`](https://github.com/nnennandukwe/agent-skills-opensandbox-release/releases/tag/demo-43483122103-1).
+The valid case created [demo prerelease `demo-43484557955-1`](https://github.com/nnennandukwe/agent-skills-opensandbox-release/releases/tag/demo-43484557955-1).
 Its wheel, manifest, candidate identity, and gate record were downloaded without
 authentication. The published wheel and manifest hashes matched the accepted
 record; the published gate record matched the check job's artifact. The wheel
@@ -31,15 +31,25 @@ lifecycle checks used by this example.
 
 ## Retained records
 
-- [Summary](evidence/2026-11-13/summary.json)
-- [Valid case](evidence/2026-11-13/valid/): gate record, original workflow/job response, and release response.
-- [Missing version](evidence/2026-11-13/missing-version/): gate record, original workflow/job response, and 404 release response.
-- [Incorrect report](evidence/2026-11-13/wrong-report/): gate record, original workflow/job response, and 404 release response.
+- [Summary](evidence/2026-11-13/final/summary.json)
+- [Valid case](evidence/2026-11-13/final/valid/): gate record, original workflow/job response, and release response.
+- [Missing version](evidence/2026-11-13/final/missing-version/): gate record, original workflow/job response, and 404 release response.
+- [Incorrect report](evidence/2026-11-13/final/wrong-report/): gate record, original workflow/job response, and 404 release response.
 
 The original workflow/job responses and release lookups were read through
 GitHub's API after execution. The JSON isn't a substitute for the linked GitHub
 run and release state; it's retained so the recorded observations remain
 inspectable after Actions artifacts expire.
+
+## Live diagnostic regression
+
+Each hosted check job also ran a live SDK regression using an invalid
+manifest and an injected cleanup-verification failure. The probe requested
+actual destruction and observed a 404 lookup before injecting the failure.
+It retained both the original helper rejection and the cleanup diagnostic,
+returned failure, and recorded a blocked decision. These records appear as
+`cleanup-probe.json` beside each gate record. The injected fault tests the
+caller's diagnostic handling; the three release cases use ordinary cleanup.
 
 ## Additional local checks
 

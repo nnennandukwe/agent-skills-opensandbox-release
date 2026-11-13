@@ -1,0 +1,63 @@
+{
+  "decision": "accepted",
+  "source_sha": "97d2a28f5441062fc5d275c9246bccf05e3f5777",
+  "scenario": "valid",
+  "sandbox_image": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+  "sdk_version": "1.2.0",
+  "candidate": {
+    "source_sha": "97d2a28f5441062fc5d275c9246bccf05e3f5777",
+    "wheel": "opensandbox_release_demo-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "be1cf9d859c6d9f0d8aac856838443594756d46e163bd27764891a5556837a71",
+    "manifest_sha256": "5db4c21d558d1b221931f4b952e15f59dca7078e0d091158ccb7f001b120141c",
+    "package": "opensandbox-release-demo",
+    "version": "0.1.0"
+  },
+  "helper_sha256": "8abd3b7f93714d06c078556f5529c2b8325c2c59e41149a67fe98cccd526b2dd",
+  "sandbox_id": "70c19622-3a3e-493e-8136-f35b9dc222e4",
+  "uploaded_files": [
+    {
+      "path": "/tmp/skill/SKILL.md",
+      "sha256": "abc4373d3a310d47c0a5bc9c4355e4e1d1f73189fc82958e2abd5fd87d5403af"
+    },
+    {
+      "path": "/tmp/skill/scripts/check_manifest.py",
+      "sha256": "8abd3b7f93714d06c078556f5529c2b8325c2c59e41149a67fe98cccd526b2dd"
+    },
+    {
+      "path": "/tmp/release-manifest.csv",
+      "sha256": "5db4c21d558d1b221931f4b952e15f59dca7078e0d091158ccb7f001b120141c"
+    }
+  ],
+  "execution": {
+    "id": "a24fb38a072f4b619454d3e03b0b6f94",
+    "execution_count": null,
+    "result": [],
+    "error": null,
+    "complete": {
+      "timestamp": 1794594633707,
+      "execution_time_in_millis": 117
+    },
+    "exit_code": 0,
+    "logs": {
+      "stdout": [
+        {
+          "text": "{\"rows\": 1, \"valid\": true, \"packages\": [{\"package\": \"opensandbox-release-demo\", \"version\": \"0.1.0\"}]}",
+          "timestamp": 1794594633706,
+          "is_error": false
+        }
+      ],
+      "stderr": []
+    }
+  },
+  "report": {
+    "rows": 1,
+    "valid": true,
+    "packages": [
+      {
+        "package": "opensandbox-release-demo",
+        "version": "0.1.0"
+      }
+    ]
+  },
+  "post_destroy_status": 404
+}

@@ -1,0 +1,59 @@
+{
+  "decision": "blocked",
+  "source_sha": "97d2a28f5441062fc5d275c9246bccf05e3f5777",
+  "scenario": "wrong-report",
+  "sandbox_image": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+  "sdk_version": "1.2.0",
+  "candidate": {
+    "source_sha": "97d2a28f5441062fc5d275c9246bccf05e3f5777",
+    "wheel": "opensandbox_release_demo-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "f1b8d46fb07e5b66fd8f648e787f358d49c111edc8149c67797b405e8dc00bc4",
+    "manifest_sha256": "5db4c21d558d1b221931f4b952e15f59dca7078e0d091158ccb7f001b120141c",
+    "package": "opensandbox-release-demo",
+    "version": "0.1.0"
+  },
+  "helper_sha256": "8abd3b7f93714d06c078556f5529c2b8325c2c59e41149a67fe98cccd526b2dd",
+  "control_sha256": "f11428527b1b4f43648700ad26997130e31d662243987865c335cba2d0d70db4",
+  "sandbox_id": "8a31615f-ab17-4d86-ac29-abd853e04ccc",
+  "uploaded_files": [
+    {
+      "path": "/tmp/skill/SKILL.md",
+      "sha256": "abc4373d3a310d47c0a5bc9c4355e4e1d1f73189fc82958e2abd5fd87d5403af"
+    },
+    {
+      "path": "/tmp/skill/scripts/check_manifest.py",
+      "sha256": "8abd3b7f93714d06c078556f5529c2b8325c2c59e41149a67fe98cccd526b2dd"
+    },
+    {
+      "path": "/tmp/release-manifest.csv",
+      "sha256": "5db4c21d558d1b221931f4b952e15f59dca7078e0d091158ccb7f001b120141c"
+    },
+    {
+      "path": "/tmp/wrong_report.py",
+      "sha256": "f11428527b1b4f43648700ad26997130e31d662243987865c335cba2d0d70db4"
+    }
+  ],
+  "execution": {
+    "id": "775f055ca4ce4250931532cc13b3e3f5",
+    "execution_count": null,
+    "result": [],
+    "error": null,
+    "complete": {
+      "timestamp": 1794594637595,
+      "execution_time_in_millis": 12
+    },
+    "exit_code": 0,
+    "logs": {
+      "stdout": [
+        {
+          "text": "{\"rows\": 99, \"valid\": true, \"packages\": [{\"package\": \"opensandbox-release-demo\", \"version\": \"0.1.0\"}]}",
+          "timestamp": 1794594637595,
+          "is_error": false
+        }
+      ],
+      "stderr": []
+    }
+  },
+  "post_destroy_status": 404,
+  "reason": "helper report doesn't match the built package and version"
+}

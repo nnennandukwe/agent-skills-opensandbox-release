@@ -4,6 +4,6 @@ __pycache__/
 build/
 dist/
 candidate/
-evidence/
+/evidence/
 .sandbox*
 .qodo/

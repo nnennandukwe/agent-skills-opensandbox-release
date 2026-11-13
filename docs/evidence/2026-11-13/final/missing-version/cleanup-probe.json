@@ -1,0 +1,62 @@
+{
+  "decision": "blocked",
+  "source_sha": "8b3f65fefb22bbdd2c31bbde07f74e77e47fd3ae",
+  "scenario": "missing-version",
+  "sandbox_image": "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+  "sdk_version": "1.2.0",
+  "candidate": {
+    "source_sha": "8b3f65fefb22bbdd2c31bbde07f74e77e47fd3ae",
+    "wheel": "opensandbox_release_demo-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "69ddea1700817b3db6729dcdefaf7779a97348f90d6db2f02ad00e002a9a5ee7",
+    "manifest_sha256": "6b22d6e6f76bd7ad88c3f06ca01407a30cc9dbb3834f585dfc8be098e19f647c",
+    "package": "opensandbox-release-demo",
+    "version": "0.1.0"
+  },
+  "helper_sha256": "f01c0f87cd637b8997b7e9e3b9be0da3f3c7e76ce3b3a7addf9e4b42d1bfd6df",
+  "sandbox_id": "de396042-c7b9-4275-a14f-ed8c2d2ae949",
+  "uploaded_files": [
+    {
+      "path": "/tmp/skill/SKILL.md",
+      "sha256": "abc4373d3a310d47c0a5bc9c4355e4e1d1f73189fc82958e2abd5fd87d5403af"
+    },
+    {
+      "path": "/tmp/skill/scripts/check_manifest.py",
+      "sha256": "f01c0f87cd637b8997b7e9e3b9be0da3f3c7e76ce3b3a7addf9e4b42d1bfd6df"
+    },
+    {
+      "path": "/tmp/release-manifest.csv",
+      "sha256": "6b22d6e6f76bd7ad88c3f06ca01407a30cc9dbb3834f585dfc8be098e19f647c"
+    }
+  ],
+  "execution": {
+    "id": "037e14207dee45868aafe019f6a30804",
+    "execution_count": null,
+    "result": [],
+    "error": {
+      "name": "CommandExecError",
+      "value": "7",
+      "timestamp": 1794595155258,
+      "traceback": [
+        "exit status 7"
+      ],
+      "exit_code": null
+    },
+    "complete": null,
+    "exit_code": 7,
+    "logs": {
+      "stdout": [],
+      "stderr": [
+        {
+          "text": "manifest rejected: row 2: package and version are required",
+          "timestamp": 1794595155258,
+          "is_error": true
+        }
+      ]
+    }
+  },
+  "check_error": "helper execution error: manifest rejected: row 2: package and version are required",
+  "post_destroy_status": 404,
+  "cleanup_failure_injected": true,
+  "cleanup_error": "deliberate cleanup verification failure after destruction",
+  "reason": "helper execution error: manifest rejected: row 2: package and version are required; cleanup failed: deliberate cleanup verification failure after destruction"
+}

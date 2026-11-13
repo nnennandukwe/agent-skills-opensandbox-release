@@ -16,7 +16,8 @@ python /tmp/skill/scripts/check_manifest.py /tmp/release-manifest.csv
 ```
 
 The helper writes JSON containing `rows`, `valid`, and `packages` on success.
-Invalid input produces a row-specific diagnostic on stderr and exit 7.
+Invalid input produces a diagnostic on stderr and exit 7. Header and row
+errors identify the row; a header-only file reports that it has no packages.
 The calling job must check the process result and compare the returned package
 and version with the candidate wheel's metadata. Preserve the report and
 candidate checksums, request sandbox cleanup, and report failure when a check

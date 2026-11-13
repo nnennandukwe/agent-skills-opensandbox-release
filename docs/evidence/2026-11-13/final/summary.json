@@ -1,0 +1,50 @@
+[
+  {
+    "scenario": "valid",
+    "run_id": 43484557955,
+    "source_sha": "8b3f65fefb22bbdd2c31bbde07f74e77e47fd3ae",
+    "jobs": {
+      "build": "success",
+      "check": "success",
+      "publish": "success"
+    },
+    "helper_exit": 0,
+    "decision": "accepted",
+    "cleanup_lookup": 404,
+    "release_url": "https://github.com/nnennandukwe/agent-skills-opensandbox-release/releases/tag/demo-43484557955-1",
+    "run_url": "https://github.com/nnennandukwe/agent-skills-opensandbox-release/actions/runs/43484557955",
+    "reason": null
+  },
+  {
+    "scenario": "missing-version",
+    "run_id": 43484563060,
+    "source_sha": "8b3f65fefb22bbdd2c31bbde07f74e77e47fd3ae",
+    "jobs": {
+      "build": "success",
+      "check": "failure",
+      "publish": "skipped"
+    },
+    "helper_exit": 7,
+    "decision": "blocked",
+    "cleanup_lookup": 404,
+    "release_url": null,
+    "run_url": "https://github.com/nnennandukwe/agent-skills-opensandbox-release/actions/runs/43484563060",
+    "reason": "helper execution error: manifest rejected: row 2: package and version are required"
+  },
+  {
+    "scenario": "wrong-report",
+    "run_id": 43484568731,
+    "source_sha": "8b3f65fefb22bbdd2c31bbde07f74e77e47fd3ae",
+    "jobs": {
+      "build": "success",
+      "check": "failure",
+      "publish": "skipped"
+    },
+    "helper_exit": 0,
+    "decision": "blocked",
+    "cleanup_lookup": 404,
+    "release_url": null,
+    "run_url": "https://github.com/nnennandukwe/agent-skills-opensandbox-release/actions/runs/43484568731",
+    "reason": "helper report doesn't match the built package and version"
+  }
+]
