@@ -9,6 +9,7 @@ EXECD_IMAGE = "opensandbox/execd@sha256:6cf7dba2f21f0b536e100563d841ac58a9f31c2b
 
 
 def main() -> None:
+    """Create a new private loopback server configuration without printing its key."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--state", type=Path, required=True)

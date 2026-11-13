@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="850" viewBox="0 0 720 850">
+  <title>Where the release check runs</title>
+  <desc>Code, tests, and review lead to a built wheel and release manifest. A skill helper runs in OpenSandbox. The delivery job accepts or rejects its result. An accepted result allows a demo prerelease; a rejected result skips publication.</desc>
+  <defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L12 6 L0 12 Z" fill="#57534e"/></marker></defs>
+  <rect width="720" height="850" fill="#f6f2e9"/>
+  <g font-family="Arial, sans-serif" fill="#252525" text-anchor="middle">
+    <text x="360" y="59" font-size="33" font-weight="700">Where the release check runs</text>
+    <rect x="140" y="105" width="440" height="85" rx="12" fill="#fffdf8" stroke="#252525" stroke-width="2"/>
+    <text x="360" y="157" font-size="29">Code, test, and review</text>
+    <path d="M360 190 V230" fill="none" stroke="#57534e" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="140" y="240" width="440" height="100" rx="12" fill="#fffdf8" stroke="#252525" stroke-width="2"/>
+    <text x="360" y="281" font-size="29">Build wheel and</text>
+    <text x="360" y="318" font-size="29">release manifest</text>
+    <path d="M360 340 V380" fill="none" stroke="#57534e" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="140" y="390" width="440" height="100" rx="12" fill="#fffdf8" stroke="#a94d2d" stroke-width="3"/>
+    <text x="360" y="430" font-size="29" font-weight="700">Run skill helper</text>
+    <text x="360" y="466" font-size="29">in OpenSandbox</text>
+    <path d="M360 490 V525" fill="none" stroke="#57534e" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M360 535 L555 605 L360 675 L165 605 Z" fill="#fffdf8" stroke="#252525" stroke-width="2"/>
+    <text x="360" y="589" font-size="27">Delivery job</text>
+    <text x="360" y="623" font-size="27">accepts the result?</text>
+    <path d="M255 638 L180 687 V720" fill="none" stroke="#57534e" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M465 638 L540 687 V720" fill="none" stroke="#57534e" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="195" y="669" font-size="25" fill="#526b54">Yes</text>
+    <text x="525" y="669" font-size="25" fill="#a94d2d">No</text>
+    <rect x="35" y="730" width="290" height="80" rx="12" fill="#e5ece3" stroke="#526b54" stroke-width="2"/>
+    <text x="180" y="765" font-size="27" font-weight="700">Publish demo</text>
+    <text x="180" y="798" font-size="27">prerelease</text>
+    <rect x="395" y="730" width="290" height="80" rx="12" fill="#f2dfd4" stroke="#a94d2d" stroke-width="2"/>
+    <text x="540" y="779" font-size="27" font-weight="700">Skip publication</text>
+  </g>
+</svg>

@@ -1,5 +1,5 @@
 name: OpenSandbox release check
-run-name: Release check · ${{ inputs.scenario }}
+run-name: Release check - ${{ inputs.scenario }}
 
 on:
   workflow_dispatch:
@@ -69,6 +69,11 @@ jobs:
           done
           echo "OpenSandbox server didn't become ready" >&2
           exit 1
+      - name: Check combined failure diagnostics through OpenSandbox
+        env:
+          RUN_LIVE_GATE_TESTS: '1'
+          OPEN_SANDBOX_TEST_CONFIG: ${{ runner.temp }}/osb.toml
+        run: python -m unittest discover -s tests -p test_live_gate.py -v
       - name: Run the skill helper and enforce its result
         env:
           SCENARIO: ${{ inputs.scenario }}
@@ -80,7 +85,7 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: gate-evidence
-          path: evidence/gate.json
+          path: evidence/*.json
           if-no-files-found: error
       - name: Stop the temporary server
         if: always()

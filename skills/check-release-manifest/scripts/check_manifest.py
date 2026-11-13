@@ -8,12 +8,13 @@ from pathlib import Path
 
 
 def check_manifest(path: Path) -> list[dict[str, str]]:
+    """Return package identities from a CSV that meets the skill's contract."""
     packages: list[dict[str, str]] = []
     seen: set[str] = set()
     with path.open(encoding="utf-8", newline="") as stream:
         reader = csv.DictReader(stream, strict=True)
         if reader.fieldnames != ["package", "version"]:
-            raise ValueError("expected header package,version")
+            raise ValueError("row 1: expected header package,version")
         for row in reader:
             if None in row or any(value is None for value in row.values()):
                 raise ValueError(f"row {reader.line_num}: expected two fields")
@@ -30,6 +31,7 @@ def check_manifest(path: Path) -> list[dict[str, str]]:
 
 
 def main() -> int:
+    """Emit a package report or return exit 7 with an input diagnostic."""
     parser = argparse.ArgumentParser()
     parser.add_argument("manifest", type=Path)
     args = parser.parse_args()

@@ -7,6 +7,9 @@ only when the check passes. A failed check must skip the publish job.
 The application is a synthetic package that prints its version. The useful
 example is the delivery workflow: `build → check → publish`.
 
+[Observed results](docs/observed-results.md) link the successful prerelease and
+both blocked publish jobs to their exact source revision and raw records.
+
 ## What passes and what blocks publication?
 
 | Scenario | Helper behavior | Required pipeline outcome |
@@ -70,6 +73,12 @@ Keep that server terminal open. In a second terminal, run:
 The gate returns 0 only after accepting the report and checking cleanup.
 Expected rejections return 1 and explain what failed. The helper's own invalid
 input exit is 7. `--inject-caller-exception` exercises cleanup after upload.
+
+The hosted check job also runs a live regression that combines a rejected
+manifest with an explicitly injected cleanup-verification fault after actual
+destruction. Its record must preserve both errors and keep the gate blocked.
+The probe is retained as `cleanup-probe.json`; ordinary contract test discovery
+skips that live test until a server and its configuration are supplied.
 
 Local commands stop before creating a GitHub release. Press Control-C in the
 server terminal when you've finished. Use a fresh candidate output directory

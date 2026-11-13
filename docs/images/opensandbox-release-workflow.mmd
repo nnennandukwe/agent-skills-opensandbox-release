@@ -1,0 +1,6 @@
+flowchart TD
+    A["Code, test, and review"] --> B["Build wheel and release manifest"]
+    B --> C["Run skill helper in OpenSandbox"]
+    C --> D{"Delivery job accepts the result?"}
+    D -->|Yes| E["Publish demo prerelease"]
+    D -->|No| F["Skip publication"]

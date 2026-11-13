@@ -12,6 +12,7 @@ from pipeline.contract import Rejected, digest, wheel_identity
 
 
 def build_candidate(dist: Path, output: Path, source_sha: str, scenario: str) -> None:
+    """Copy one built wheel and record its identity with a scenario's manifest."""
     wheels = list(dist.glob("*.whl"))
     if len(wheels) != 1:
         raise Rejected("build must produce exactly one wheel")
@@ -39,6 +40,7 @@ def build_candidate(dist: Path, output: Path, source_sha: str, scenario: str) ->
 
 
 def main() -> int:
+    """Prepare a fresh candidate directory or report a controlled build failure."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--dist", type=Path, default=Path("dist"))
     parser.add_argument("--output", type=Path, default=Path("candidate"))

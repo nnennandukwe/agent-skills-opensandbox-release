@@ -12,10 +12,12 @@ class Rejected(ValueError):
 
 
 def digest(data: bytes) -> str:
+    """Return the SHA-256 identity of the supplied artifact bytes."""
     return hashlib.sha256(data).hexdigest()
 
 
 def wheel_identity(path: Path) -> tuple[str, str]:
+    """Read the package name and version from exactly one wheel metadata file."""
     with ZipFile(path) as wheel:
         metadata_files = [name for name in wheel.namelist() if name.endswith('.dist-info/METADATA')]
         if len(metadata_files) != 1:
@@ -28,6 +30,7 @@ def wheel_identity(path: Path) -> tuple[str, str]:
 
 
 def verify_candidate(folder: Path, source_sha: str) -> dict[str, str]:
+    """Reject candidate bytes or wheel identity that differ from the build record."""
     candidate = json.loads((folder / "candidate.json").read_text())
     fields = {"source_sha", "wheel", "wheel_sha256", "manifest_sha256", "package", "version"}
     if type(candidate) is not dict or set(candidate) != fields:
@@ -55,6 +58,7 @@ def validate_report(
     stderr: str,
     expected_packages: list[dict[str, str]],
 ) -> dict:
+    """Accept only successful reports matching the independently expected packages."""
     if exit_code != 0:
         raise Rejected(f"helper exited {exit_code}: {stderr.strip()}")
     try:
@@ -74,6 +78,7 @@ def validate_report(
 
 
 def verify_publish_evidence(folder: Path, evidence: Path, source_sha: str) -> dict:
+    """Require accepted evidence and cleanup for the exact candidate being published."""
     candidate = verify_candidate(folder, source_sha)
     record = json.loads(evidence.read_text())
     if (

@@ -9,6 +9,7 @@ from pipeline.contract import verify_publish_evidence
 
 
 def main() -> int:
+    """Return success only when the candidate matches accepted gate evidence."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--candidate", type=Path, default=Path("candidate"))
     parser.add_argument("--evidence", type=Path, default=Path("evidence/gate.json"))

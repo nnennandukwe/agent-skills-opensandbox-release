@@ -23,6 +23,7 @@ IMAGE = "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe1
 
 
 async def verify_destroyed(sandbox_id: str, connection: ConnectionConfig) -> int:
+    """Require a not-found response from a separate lifecycle client."""
     manager = await SandboxManager.create(connection_config=connection)
     try:
         try:
@@ -37,6 +38,7 @@ async def verify_destroyed(sandbox_id: str, connection: ConnectionConfig) -> int
 
 
 async def run_check(args: argparse.Namespace, record: dict) -> None:
+    """Run the helper with bounded SDK calls and retain check and cleanup failures."""
     candidate = verify_candidate(args.candidate, args.source_sha)
     record["candidate"] = candidate
     expected = [{"package": candidate["package"], "version": candidate["version"]}]
@@ -87,13 +89,26 @@ async def run_check(args: argparse.Namespace, record: dict) -> None:
             if execution.error is not None:
                 raise Rejected(f"helper execution error: {stderr.strip() or execution.error.name}")
             record["report"] = validate_report(execution.exit_code, stdout, stderr, expected)
+    except (Rejected, ValueError, OSError, TimeoutError, SandboxException) as error:
+        record["check_error"] = str(error)
+        raise
     finally:
-        async with asyncio.timeout(45):
-            await sandbox.destroy()
-            record["post_destroy_status"] = await verify_destroyed(sandbox.id, connection)
+        try:
+            async with asyncio.timeout(45):
+                await sandbox.destroy()
+                record["post_destroy_status"] = await verify_destroyed(sandbox.id, connection)
+                if args.inject_cleanup_failure:
+                    record["cleanup_failure_injected"] = True
+                    raise Rejected("deliberate cleanup verification failure after destruction")
+        except (Rejected, TimeoutError, SandboxException) as error:
+            record["cleanup_error"] = str(error)
+            if "check_error" in record:
+                raise Rejected(f"{record['check_error']}; cleanup failed: {error}") from error
+            raise
 
 
 async def main(args: argparse.Namespace) -> int:
+    """Write the gate record and return a nonzero exit for any expected rejection."""
     record = {
         "decision": "blocked", "source_sha": args.source_sha,
         "scenario": args.scenario, "sandbox_image": IMAGE,
@@ -124,4 +139,5 @@ if __name__ == "__main__":
     parser.add_argument("--scenario", choices=["valid", "missing-version", "wrong-report"], default="valid")
     parser.add_argument("--output", type=Path, default=Path("evidence/gate.json"))
     parser.add_argument("--inject-caller-exception", action="store_true")
+    parser.add_argument("--inject-cleanup-failure", action="store_true")
     raise SystemExit(asyncio.run(main(parser.parse_args())))
